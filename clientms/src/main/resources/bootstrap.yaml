@@ -1,6 +1,6 @@
 spring:
   application:
-    name: clientms-service
+    name: clientms
   cloud:
     config:
       enabled: true
