@@ -11,5 +11,12 @@ spring:
     hibernate.ddl-auto: update
     show-sql: true
     driverClassName: com.mysql.cj.jdbc.Driver
-
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    instance:
+      hostname: localhost
 
