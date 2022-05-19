@@ -7,6 +7,4 @@ spring:
       port: 27017
       host: localhost
       database: imagemicro
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+
