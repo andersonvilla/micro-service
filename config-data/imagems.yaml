@@ -9,4 +9,4 @@ spring:
       database: imagemicro
   mvc:
     pathmatch:
-      matching-strategy: ANT_PATH_MATCHER
+      matching-strategy: ant_path_matcher
