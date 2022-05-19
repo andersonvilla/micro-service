@@ -21,5 +21,4 @@ public class Client {
     private String city;
     private String typeOfId;
     private String age;
-    private String image;
 }

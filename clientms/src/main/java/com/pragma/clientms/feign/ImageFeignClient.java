@@ -4,7 +4,7 @@ import com.pragma.clientms.model.image.Image;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "imagem-service", url = "http://localhost:8002", path = "/imagems")
+@FeignClient(name = "imagems", path = "/imagems")
 public interface ImageFeignClient {
 
     @PostMapping()
