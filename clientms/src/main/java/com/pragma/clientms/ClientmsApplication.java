@@ -10,8 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @EnableEurekaClient
-@EnableHystrix
-@EnableHystrixDashboard
 public class ClientmsApplication {
 
 	public static void main(String[] args) {
