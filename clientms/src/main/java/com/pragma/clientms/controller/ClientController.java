@@ -2,8 +2,6 @@ package com.pragma.clientms.controller;
 
 import com.pragma.clientms.model.client.Client;
 import com.pragma.clientms.model.dto.ClientDTO;
-import com.pragma.clientms.model.image.Image;
-import com.pragma.clientms.model.mapper.ClientMapper;
 import com.pragma.clientms.service.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +23,7 @@ public class ClientController {
     }
 
     @PostMapping
-    ResponseEntity<Client> createClient(@RequestBody ClientDTO client) {
+    ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO client) {
         return new ResponseEntity<>(clientService.createClient(client), HttpStatus.CREATED);
     }
 
@@ -41,7 +39,7 @@ public class ClientController {
     }
 
     @PutMapping("/{document}")
-    ResponseEntity<Client> updateClient(@PathVariable("document") Long document, @RequestBody ClientDTO clientDTO) {
+    ResponseEntity<ClientDTO> updateClient(@PathVariable("document") Long document, @RequestBody ClientDTO clientDTO) {
         clientService.updateClient(document, clientDTO);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

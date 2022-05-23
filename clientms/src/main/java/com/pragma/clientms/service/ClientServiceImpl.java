@@ -26,7 +26,7 @@ public class ClientServiceImpl implements ClientService {
     static ClientMapper mapper = ClientMapper.singleInstance();
 
     @Override
-    public Client createClient(ClientDTO clientDTO) {
+    public ClientDTO createClient(ClientDTO clientDTO) {
         if (clientDTO.getDocument() == null || clientDTO.getFirstName().isEmpty() || clientDTO.getLastName().isEmpty() || clientDTO.getCity().isEmpty() || clientDTO.getTypeOfId().isEmpty() || clientDTO.getAge().isEmpty() || clientDTO.getImage().isEmpty()) {
             throw new EmptyDataException(ErrorConstants.EMPTYDATA);
         } else if (clientRepository.findById(clientDTO.getDocument()).isPresent()) {
@@ -34,11 +34,11 @@ public class ClientServiceImpl implements ClientService {
         }
         Image image = new Image(clientDTO.getDocument(), clientDTO.getImage());
         imageFeignClient.save(image);
-        return clientRepository.save(mapper.dtoToDomain(clientDTO));
+        return mapper.domainToDto(clientRepository.save(mapper.dtoToDomain(clientDTO)));
     }
 
     @Override
-    public Client updateClient(Long id, ClientDTO client) {
+    public ClientDTO updateClient(Long id, ClientDTO client) {
         if (client.getFirstName().isEmpty() || client.getLastName().isEmpty() || client.getCity().isEmpty() || client.getTypeOfId().isEmpty() || client.getAge().isEmpty() || client.getDocument() == null || client.getImage().isEmpty()) {
             throw new EmptyDataException(ErrorConstants.EMPTYDATA);
         } else if (id.longValue() != client.getDocument().longValue()) {
@@ -54,8 +54,8 @@ public class ClientServiceImpl implements ClientService {
         clientToUpdate.setCity(client.getCity());
         clientToUpdate.setTypeOfId(client.getTypeOfId());
         clientToUpdate.setAge(client.getAge());
-        imageFeignClient.save(imageToUpdate);
-        return clientRepository.save(clientToUpdate);
+        imageFeignClient.updateImage(id,imageToUpdate);
+        return mapper.domainToDto(clientRepository.save(clientToUpdate));
     }
 
     @Override
