@@ -35,4 +35,14 @@ public class GlobalExceptions {
         return new ResponseEntity<>(errorModel, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<ErrorModel> imageServiceError(ImageServiceException exception){
+        ErrorModel errorModel = new ErrorModel();
+        errorModel.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+        errorModel.setMessage(exception.getMessage());
+        errorModel.setTimestamp(System.currentTimeMillis());
+        return new ResponseEntity<>(errorModel, HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+
 }

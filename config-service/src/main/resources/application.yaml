@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          default-label: config-server
+          default-label: circuit-breaker
           uri: https://github.com/andersonvilla/micro-service
           search-paths: config-data
   application:

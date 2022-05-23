@@ -4,7 +4,7 @@ import com.pragma.clientms.model.image.Image;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "imagems", path ="/imagems" ,fallback = ClientHystrixFallbackFactory.class)
+@FeignClient(name = "imagems", path ="/imagems")
 public interface ImageFeignClient {
 
     @PostMapping()
